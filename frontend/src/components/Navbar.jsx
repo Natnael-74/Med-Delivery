@@ -12,10 +12,10 @@ function Navbar() {
 
   return (
     <div className="flex items-center justify-between py-5 font-medium">
-      <NavLink to="/" className="flex items-center gap-2">
+      <Link to="/" className="flex items-center gap-2">
         <BsCapsule className="text-3xl text-gray-700 transform hover:scale-110 transition-all duration-300" />
         <span className="text-2xl text-gray-700">Med-Delivery</span>
-      </NavLink>
+      </Link>
       <ul className="hidden sm:flex gap-5 text-sm text-gray-800 ">
         <NavLink
           to="/"
