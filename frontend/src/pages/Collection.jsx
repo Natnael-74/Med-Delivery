@@ -15,80 +15,56 @@ function Collection() {
   const { productData, search, showSearch } = useShop();
 
   function toggleCategory(e) {
-    const category = e.target.value;
-    if (category.includes(e.target.value)) {
-      setCategory(category.filter((c) => c !== e.target.value));
+    const value = e.target.value;
+    if (category.includes(value)) {
+      setCategory(category.filter((c) => c !== value));
     } else {
-      setCategory([...category, e.target.value]);
+      setCategory([...category, value]);
     }
   }
 
   function toggleSubCategory(e) {
-    const subCategory = e.target.value;
-    if (subCategory.includes(e.target.value)) {
-      setSubCategory(subCategory.filter((c) => c !== e.target.value));
+    const value = e.target.value;
+    if (subCategory.includes(value)) {
+      setSubCategory(subCategory.filter((c) => c !== value));
     } else {
-      setSubCategory([...subCategory, e.target.value]);
+      setSubCategory([...subCategory, value]);
     }
   }
 
-  function applyFilter() {
-    let productCopy = [...productData];
+  useEffect(() => {
+    let products = [...productData];
 
-    if (showSearch) {
-      productCopy = productCopy.filter((product) =>
+    // Apply search filter
+    if (showSearch && search) {
+      products = products.filter((product) =>
         product.name?.toLowerCase()?.includes(search?.toLowerCase()),
       );
     }
 
-    if (category.length > 0 && subCategory.length > 0) {
-      setFilterProducts(
-        productCopy.filter(
-          (product) =>
-            category.includes(product.category) &&
-            subCategory.includes(product.subCategory),
-        ),
+    // Apply category filter (gender)
+    if (category.length > 0) {
+      products = products.filter((product) =>
+        category.includes(product.gender),
       );
-    } else if (category.length > 0) {
-      setFilterProducts(
-        productCopy.filter((product) => category.includes(product.gender)),
-      );
-    } else if (subCategory.length > 0) {
-      setFilterProducts(
-        productCopy.filter((product) =>
-          subCategory.includes(product.ageCategory),
-        ),
-      );
-    } else {
-      setFilterProducts(productData);
     }
-  }
 
-  function sortProducts() {
-    const filterProductCopy = [...filterProducts];
-    switch (sortType) {
-      case "relavant":
-        setFilterProducts(filterProductCopy);
-        break;
-      case "low-high":
-        setFilterProducts(filterProductCopy.sort((a, b) => a.price - b.price));
-        break;
-      case "high-low":
-        setFilterProducts(filterProductCopy.sort((a, b) => b.price - a.price));
-        break;
-      default:
-        applyFilter();
-        setFilterProducts(filterProductCopy);
+    // Apply subCategory filter (ageCategory)
+    if (subCategory.length > 0) {
+      products = products.filter((product) =>
+        subCategory.includes(product.ageCategory),
+      );
     }
-  }
 
-  useEffect(() => {
-    applyFilter();
-  }, [category, subCategory, search, showSearch]);
+    // Apply sorting
+    if (sortType === "low-high") {
+      products.sort((a, b) => a.price - b.price);
+    } else if (sortType === "high-low") {
+      products.sort((a, b) => b.price - a.price);
+    }
 
-  useEffect(() => {
-    sortProducts();
-  }, [sortType]);
+    setFilterProducts(products);
+  }, [category, subCategory, search, showSearch, sortType, productData]);
 
   return (
     <div className="flex flex-col sm:flex-row gap-10 sm:gap:10 pt-10 border-t">
