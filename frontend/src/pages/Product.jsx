@@ -67,7 +67,7 @@ function Product() {
                   onClick={() => setSelectedSize(size)}
                   disabled={size === ""}
                   key={size}
-                  className={`border border-gray-500 bg-gray-100  py-2 px-4 cursor-pointer hover:bg-gray-200 transition-all duration-300 ease-in-out ${size === selectedSize ? "bg-gray-300" : ""}`}
+                  className={`border border-gray-500 bg-gray-100  py-2 px-4 cursor-pointer hover:bg-gray-200 transition-all duration-300 ease-in-out ${size === selectedSize ? "bg-gray-300 shadow:xl" : ""}`}
                 >
                   {size}
                 </button>
@@ -75,7 +75,7 @@ function Product() {
             </div>
           </div>
           <button
-            className="bg-black text-sm  text-white py-3 px-8 hover:bg-gray-800 active:bg-gray-700 transition-all duration-300 ease-in-out"
+            className="bg-black text-sm  text-white py-3 px-8 cursor:pointer hover:bg-gray-800 active:bg-gray-700 transition-all duration-300 ease-in-out"
             disabled={selectedSize === ""}
           >
             ADD TO CART
@@ -95,12 +95,16 @@ function Product() {
           <b className="border px-5 py-3 text-sm">Description</b>
           <p className="border px-5 py-3 text-sm">Reviews(5.0)</p>
         </div>
-        <div className="flex flex-col gap-4 border py-6 text-sm text-gray-500 ">
+        <div className="flex flex-col gap-4 border py-6 px-3 text-sm text-gray-500 ">
           <p>
             An e-commerce platform is a platform that enables online shopping.
-            It allows users to buy and sell products and services online.
+            It allows users to buy and sell products and services online.Each
+            product is listed with a title, description, price, and image. The
+            user can add the product to their cart and proceed to checkout.
           </p>
           <p>
+            Each product is listed with a title, description, price, and image.
+            The user can add the product to their cart and proceed to checkout.
             Each product is listed with a title, description, price, and image.
             The user can add the product to their cart and proceed to checkout.
           </p>
@@ -108,8 +112,8 @@ function Product() {
       </div>
       {/* related products */}
       <RelatedProducts
-        category={product.gender}
-        subCategory={product.ageCategory}
+        category={product.category}
+        subCategory={product.subCategory}
       />
     </div>
   );
