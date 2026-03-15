@@ -22,7 +22,11 @@ function Hero() {
         </div>
       </div>
       {/* Hero right side */}
-      <img src={heroImage} alt="hero image" className="w-full sm:w-1/2" />
+      <img
+        src={heroImage}
+        alt="hero image"
+        className="w-full sm:w-1/2 object-cover"
+      />
     </div>
   );
 }
