@@ -10,11 +10,11 @@ function NewsLetterBox() {
 
   return (
     <div className="my-18 text-center">
-      <div className="text-3xl text-center py-8">
+      <div className="text-3xl text-center sm:py-8">
         <Title title="NEWSLETTER" subTitle="SIGNUP" />
       </div>
 
-      <p className="w-3/4 font-medium m-auto text-2xl sm:text-sm md:text-base text-gray-600">
+      <p className="w-3/4 font-medium m-auto text-sm sm:text-sm md:text-base text-gray-600">
         Subscribe to our newsletter to get the latest updates on our products
         and promotions. By subscribing to our newsletter, you agree to receive
         emails from us.
