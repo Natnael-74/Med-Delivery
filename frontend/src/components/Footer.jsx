@@ -20,29 +20,29 @@ function Footer() {
 
         <div>
           <p className="text-xl font-medium mb-5">COMPANY</p>
-          <ul className="flex flex-col gap-1 text-gray-600">
-            <li className="hover:text-gray-900 transition-all duration-300">
-              <Link to="/">Home</Link>
+          <ul className="flex flex-col gap-1 text-gray-500">
+            <li className="hover:text-gray-950 transition-all duration-300">
+              Home
             </li>
-            <li className="hover:text-gray-900 transition-all duration-300">
-              <Link to="/about">About</Link>
+            <li className="hover:text-gray-950 transition-all duration-300">
+              About Us
             </li>
-            <li className="hover:text-gray-900 transition-all duration-300">
-              <Link to="/collection">Collection</Link>
+            <li className="hover:text-gray-950 transition-all duration-300">
+              Delivery
             </li>
-            <li className="hover:text-gray-900 transition-all duration-300">
-              <Link to="/contact">Contact</Link>
+            <li className="hover:text-gray-950 transition-all duration-300">
+              Privacy Policy
             </li>
           </ul>
         </div>
 
         <div>
           <p className="text-xl font-medium mb-5">GET IN TOUCH</p>
-          <ul className="flex flex-col gap-1 text-gray-600">
-            <li className="hover:text-gray-900 transition-all duration-300">
+          <ul className="flex flex-col gap-1 text-gray-500">
+            <li className="hover:text-gray-950 transition-all duration-300">
               +91 1234567890
             </li>
-            <li className="hover:text-gray-900 transition-all duration-300">
+            <li className="hover:text-gray-950 transition-all duration-300">
               med-delivery@.com
             </li>
           </ul>
