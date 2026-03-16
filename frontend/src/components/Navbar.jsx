@@ -5,10 +5,17 @@ import { LiaUserCogSolid } from "react-icons/lia";
 import { PiShoppingCartLight } from "react-icons/pi";
 import { TbMenuDeep } from "react-icons/tb";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useShop } from "../context/ShopContext";
 
 function Navbar() {
   const [isVisible, setIsVisible] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+  const { setShowSearch, getCartCount, cart } = useShop();
+
+  useEffect(() => {
+    setCartCount(getCartCount());
+  }, [cart, getCartCount]);
 
   return (
     <div className="flex items-center justify-between py-5 font-medium">
@@ -48,7 +55,10 @@ function Navbar() {
       </ul>
 
       <div className="flex items-center gap-6">
-        <IoIosSearch className="text-2xl cursor-pointer" />
+        <IoIosSearch
+          className="text-2xl cursor-pointer"
+          onClick={() => setShowSearch(true)}
+        />
 
         <div className="group relative">
           <LiaUserCogSolid className="text-2xl cursor-pointer" />
@@ -70,7 +80,7 @@ function Navbar() {
         <Link to="/cart" className="relative">
           <PiShoppingCartLight className="text-2xl font-bolder cursor-pointer w-5 min-w-5" />
           <span className="absolute bottom-[-5px] right-[-7px] w-4 text-center leading-4 bg-black font-semibold text-white aspect-square rounded-full text-[8px]">
-            3
+            {cartCount}
           </span>
         </Link>
         <TbMenuDeep

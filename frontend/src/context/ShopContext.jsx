@@ -50,6 +50,31 @@ function ShopProvider({ children }) {
     return count;
   }
 
+  function updateQuantity(productId, size, quantity) {
+    const cartData = structuredClone(cart);
+    cartData[productId][size] = quantity;
+    setCart(cartData);
+  }
+
+  function getCartAmount() {
+    let amount = 0;
+    for (const items in cart) {
+      for (const item in cart[items]) {
+        try {
+          if (cart[items][item] > 0) {
+            const product = productData.find(
+              (product) => product._id === items,
+            );
+            amount += product.price * cart[items][item];
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }
+    return amount;
+  }
+
   return (
     <ShopContext.Provider
       value={{
@@ -63,6 +88,8 @@ function ShopProvider({ children }) {
         cart,
         addToCart,
         getCartCount,
+        updateQuantity,
+        getCartAmount,
       }}
     >
       {children}
