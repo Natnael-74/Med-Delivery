@@ -9,7 +9,7 @@ function Product() {
   const [selectedSize, setSelectedSize] = useState("");
 
   const { productId } = useParams();
-  const { productData, currency } = useShop();
+  const { productData, currency, addToCart } = useShop();
 
   const product = productData.find((product) => product._id === productId);
   if (product === undefined) {
@@ -67,7 +67,7 @@ function Product() {
                   onClick={() => setSelectedSize(size)}
                   disabled={size === ""}
                   key={size}
-                  className={`border border-gray-500 bg-gray-100  py-2 px-4 cursor-pointer hover:bg-gray-200 transition-all duration-300 ease-in-out ${size === selectedSize ? "bg-gray-300 shadow:xl" : ""}`}
+                  className={`border border-gray-500 bg-gray-100  py-2 px-4 cursor-pointer hover:bg-gray-200 transition-all duration-300 ease-in-out ${size === selectedSize ? "bg-gray-300 shadow:xl transform scale-105" : ""}`}
                 >
                   {size}
                 </button>
@@ -77,6 +77,7 @@ function Product() {
           <button
             className="bg-black text-sm  text-white py-3 px-8 cursor:pointer hover:bg-gray-800 active:bg-gray-700 transition-all duration-300 ease-in-out"
             disabled={selectedSize === ""}
+            onClick={() => addToCart(product._id, selectedSize)}
           >
             ADD TO CART
           </button>
