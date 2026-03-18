@@ -24,6 +24,7 @@ function CartTotal() {
           </p>
         </div>
         <div className="flex justify-between">
+          {/* use the bold */}
           <b>Total</b>
           <b>
             {currency}
