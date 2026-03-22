@@ -61,7 +61,10 @@ function Navbar() {
         />
 
         <div className="group relative">
-          <LiaUserCogSolid className="text-2xl cursor-pointer" />
+          <Link to="/login">
+            <LiaUserCogSolid className="text-2xl cursor-pointer" />
+          </Link>
+
           <div className="absolute pt-4 right-0 hidden group-hover:block dropdown-menu">
             <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-white text-gray-500 rounded-xl shadow-lg">
               <p className="text-gray-700 text-sm cursor-pointer hover:text-black hover:transform hover:scale-105 transition-all duration-300">
