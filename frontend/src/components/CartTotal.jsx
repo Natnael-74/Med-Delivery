@@ -1,4 +1,5 @@
 import { useShop } from "../context/ShopContext";
+import Title from "./Title";
 
 function CartTotal() {
   const { currency, deliveryFee, getCartAmount } = useShop();
