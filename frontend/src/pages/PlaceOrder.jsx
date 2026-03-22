@@ -1,6 +1,13 @@
+import { RiBankCard2Line } from "react-icons/ri";
+import CartTotal from "../components/CartTotal";
 import Title from "../components/Title";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function PlaceOrder() {
+  const [method, setMethod] = useState("cod");
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-top">
       {/* {left-side} */}
@@ -60,6 +67,55 @@ function PlaceOrder() {
           placeholder="Phone"
           className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
         />
+      </div>
+
+      {/* {Right --Side} */}
+      <div className="mt-8">
+        <div className="mt-8 min-w-80">
+          <CartTotal />
+        </div>
+        <div className="mt-12">
+          <Title title="PAYMENT" subTitle="METHOD" />
+          <div className="flex flex-col gap-3 lg:flex-row">
+            <div
+              onClick={() => setMethod("tele")}
+              className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
+            >
+              <p
+                className={`min-w-3.5 h-3.5 border rounded-full ${method === "tele" ? "bg:green-400" : " "}`}
+              ></p>
+              <RiBankCard2Line className="h-5 mx-4" />
+            </div>
+            <div
+              onClick={() => setMethod("chapa")}
+              className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
+            >
+              <p
+                className={`min-w-3.5 h-3.5 border rounded-full ${method === "chapa" ? "bg:green-400" : " "}`}
+              ></p>
+              <RiBankCard2Line className="h-5 mx-4" />
+            </div>
+            <div
+              onClick={() => setMethod("cod")}
+              className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
+            >
+              <p
+                className={`min-w-3.5 h-3.5 border rounded-full ${method === "cod" ? "bg:green-400" : " "}`}
+              ></p>
+              <p className="text-gray-500 font-medium text-sm mx-4">
+                CASH ON DELIVERY
+              </p>
+            </div>
+          </div>
+          <div className="w-full text-end mt-8">
+            <button
+              className="bg-black text-white px-16 py-3 text-sm"
+              onClick={() => navigate("/orders")}
+            >
+              PLACE ORDER
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
