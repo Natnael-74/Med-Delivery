@@ -1,10 +1,12 @@
-import { createContext, use, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import products from "../assets/asset";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const ShopContext = createContext();
 
 function ShopProvider({ children }) {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cart, setCart] = useState({});
@@ -90,6 +92,7 @@ function ShopProvider({ children }) {
         getCartCount,
         updateQuantity,
         getCartAmount,
+        navigate,
       }}
     >
       {children}
