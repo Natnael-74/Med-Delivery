@@ -4,7 +4,7 @@ import { useShop } from "../context/ShopContext";
 import { MdDeleteOutline } from "react-icons/md";
 
 function Cart() {
-  const { currency, cart, productData, updateQuantity } = useShop();
+  const { currency, cart, productData, updateQuantity, navigate } = useShop();
   return (
     <div className="border-t pt-14">
       <div className="text-2xl mb-3">
@@ -63,6 +63,14 @@ function Cart() {
       <div className="flex justify-end my-20">
         <div className="w-full sm:w-112.5">
           <CartTotal />
+          <div className="w-full text-end">
+            <button
+              className="bg-black text-white text-sm my-8 px-8 py-3"
+              onClick={() => navigate("/place-order")}
+            >
+              PROCEED TO CHECKOUT
+            </button>
+          </div>
         </div>
       </div>
     </div>
