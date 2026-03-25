@@ -1,5 +1,8 @@
 function Contact() {
-  return <div></div>;
+  const [email,setEmail]=useState
+  return <div>
+    hhj
+  </div>;
 }
 
 export default Contact;
