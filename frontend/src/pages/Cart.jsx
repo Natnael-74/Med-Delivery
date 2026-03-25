@@ -1,23 +1,40 @@
+import { useNavigate } from "react-router-dom";
 import CartTotal from "../components/CartTotal";
 import Title from "../components/Title";
 import { useShop } from "../context/ShopContext";
 import { MdDeleteOutline } from "react-icons/md";
 
 function Cart() {
-  const { currency, cart, productData, updateQuantity, navigate } = useShop();
+  const { currency, cart, productData, updateQuantity } = useShop();
+  const navigate = useNavigate();
+
+  // Convert cart object to array format
+  const cartItems = [];
+  for (const productId in cart) {
+    for (const size in cart[productId]) {
+      if (cart[productId][size] > 0) {
+        cartItems.push({
+          productId,
+          size,
+          quantity: cart[productId][size],
+        });
+      }
+    }
+  }
+
   return (
     <div className="border-t pt-14">
       <div className="text-2xl mb-3">
         <Title title="YOUR" subTitle="CART" />
       </div>
       <div>
-        {cart.map((item) => {
+        {cartItems.map((item) => {
           const product = productData.find(
             (product) => product._id === item.productId,
           );
           return (
             <div
-              key={item.productId}
+              key={`${item.productId}-${item.size}`}
               className="py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4"
             >
               <div className="flex items-start gap-6">
