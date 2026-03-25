@@ -2,14 +2,14 @@ import { useShop } from "../context/ShopContext";
 import Title from "../components/Title";
 
 function Orders() {
-  const { products, currency } = useShop();
+  const { productData, currency } = useShop();
   return (
     <div className="border-t pt-16">
       <div className="text-2xl">
         <Title title="MY" subTitle="ORDERS" />
       </div>
       <div>
-        {products?.slice(1, 4).map((product, index) => (
+        {productData?.slice(0, 4).map((product, index) => (
           <div
             key={index}
             className="py-4 border-t border-b text-gray-700 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
