@@ -1,5 +1,6 @@
 import Title from "../components/Title";
 import image1 from "../assets/and-machines-aEwgvCxW674-unsplash.jpg";
+import NewsLetterBox from "../components/NewsLetterBox";
 function About() {
   return (
     <div>
@@ -28,7 +29,7 @@ function About() {
           </p>
         </div>
       </div>
-      <div className="text-xl py-4">
+      <div className="text-xl py-4 mt-10">
         <Title title="WHY" subTitle="CHOOSE US" />
       </div>
       <div className="flex flex-col md:flex-row text-sm mb-20 ">
@@ -54,6 +55,7 @@ function About() {
           </p>
         </div>
       </div>
+      <NewsLetterBox />
     </div>
   );
 }
