@@ -28,9 +28,10 @@ function About() {
           </p>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row text-sm mb-20">
-        <div></div>
+      <div className="text-xl py-4">
+        <Title title="WHY" subTitle="CHOOSE US" />
       </div>
+      <div className="flex flex-col md:flex-row text-sm mb-20 "></div>
     </div>
   );
 }
