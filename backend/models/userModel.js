@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import validator from "validator";
 
 const userSchema = new mongoose.Schema(
   {
@@ -14,10 +15,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: [true, "Email already exists"],
       trim: true,
-      match: [
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        "Please enter a valid email",
-      ],
+      validate: [validator.isEmail, "Please enter a valid email"],
     },
     password: {
       type: String,
